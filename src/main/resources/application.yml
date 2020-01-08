@@ -1,0 +1,42 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /cmfz
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lxx
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  servlet:
+    multipart:
+      # 最大支持文件大小
+      max-file-size: 50MB
+      # 最大支持请求大小
+      max-request-size: 100MB
+      #设置编码
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+  redis:
+    host: 192.168.202.15
+    port: 6379
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lxx.entity
+logging:
+  level:
+    root: info
+    com.lxx.dao: debug
+    com.lxx.service: debug
+    com.lxx.controller: debug

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lxx.dao.CourseDao">
+    <select id="querryByUserId" resultType="com.lxx.entity.Course">
+        select * from course where user_id=#{uid}
+    </select>
+</mapper>
