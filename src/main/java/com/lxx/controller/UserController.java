@@ -150,7 +150,6 @@ public class UserController {
     //聊天
     @RequestMapping("talk")
     public void talkOn(String meg){
-        System.out.println(meg);
         GoEasy goEasy = new GoEasy( "http://rest-hangzhou.goeasy.io", "BC-3d071f1482a74517b136d152a1465b6b");
         Map map = showUserTime();
         String s = JSONUtils.toJSONString(meg);
