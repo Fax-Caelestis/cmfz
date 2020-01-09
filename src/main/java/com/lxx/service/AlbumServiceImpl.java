@@ -1,6 +1,8 @@
 package com.lxx.service;
 
 import com.lxx.aspect.Mylog;
+import com.lxx.cache.AddOrSelectCache;
+import com.lxx.cache.ClearCache;
 import com.lxx.dao.AlbumDao;
 import com.lxx.entity.Album;
 import org.apache.ibatis.session.RowBounds;
@@ -18,6 +20,7 @@ public class AlbumServiceImpl implements AlbumService {
     @Autowired
     AlbumDao albumDao;
     //分页
+    @AddOrSelectCache
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     @Override
     public List<Album> querrypage(Integer page, Integer rows) {
@@ -25,17 +28,20 @@ public class AlbumServiceImpl implements AlbumService {
     }
     @Mylog(name = "修改专辑信息")
     //修改
+    @ClearCache
     @Override
     public void update(Album album) {
         albumDao.updateByPrimaryKeySelective(album);
     }
     @Mylog(name = "删除专辑")
     //删除
+    @ClearCache
     @Override
     public void delete(Album album) {
         albumDao.deleteByPrimaryKey(album.getId());
 
     }
+    @AddOrSelectCache
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     //差一个
     @Override
@@ -43,6 +49,7 @@ public class AlbumServiceImpl implements AlbumService {
 
         return albumDao.selectOne(album);
     }
+    @ClearCache
     @Mylog(name = "添加专辑")
     //添加
     @Override
