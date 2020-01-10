@@ -19,6 +19,12 @@
     </properties>
 
     <dependencies>
+        <!--shiro-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.3.2</version>
+        </dependency>
         <!--JDIES-->
         <dependency>
             <groupId>redis.clients</groupId>
